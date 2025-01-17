@@ -7,6 +7,7 @@ import opForm from './components/MySigmas/formreg/formreg';
 import Home from './components/MySigmas/pages/homeMe';
 import About from './components/MySigmas/pages/aboutUss';
 import { BrowserRouter, Routes, Route } from "react-router";
+import { NavLink, Link} from "react-router";
 function App () {
   return (
       <div>
@@ -21,19 +22,39 @@ function App () {
         <Counter />
         <BrowserRouter>
         <Routes>
-          <div>
-            <Route exact path="/">
-              <Home />
+            <Route path="dashboard" element={<Dashboard />}>
+            <Route index element={<Home />} />
+            <Route path="settings" element={<Settings />} />
+            <Route path="about" element={<About/>} />
             </Route>
-            <Route exact path="/about">
-              <Route />
+
+            <Route element={<AuthLayout />}>
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
             </Route>
-          </div>
+
+            <Route path="concerts">
+            <Route index element={<ConcertsHome />} />  
+            <Route path=":city" element={<City />} />
+            <Route path="trending" element={<Trending />} />
+            </Route>
+
         </Routes>
         </BrowserRouter>
-     
+        <nav>
+          {
+            <NavLink
+            to="/messages"
+            style={({ isActive}) => ({
+              color: isActive ? "red" : "black",
+            })}
+            >
+              
+            </NavLink>
+          }
+          
+        </nav>
       </div>
-       
   )
 }
 export default App
