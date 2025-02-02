@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useLayoutEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import Button from "../common/Button/Butcomponent";
 
-const Counter = () => {
+const Counter:FC = () => {
     const [count, setCount] = useState(0);
 
     useEffect(() => { console.log('Count has changed!') }, [count])
