@@ -1,9 +1,16 @@
-import React, {useEffect, useState} from 'react';
-import axiosInstance from '../api/axiosinstance';
+import {FC, useEffect, useState} from 'react';
+import axiosInstance from '../api/axiosInstance';
 
-const Users = () => {
- const [users, setUsers] = useState([]);
- const [loading, setloading] = useState(true);
+
+interface User {
+    id: number;
+    name: string;
+    email: string;
+}
+
+const Users: FC = () => {
+ const [users, setUsers] = useState<User[]>([]);
+ const [loading, setloading] = useState<boolean>(true);
 
  useEffect(() => {
     const fetchUsers = async () => {

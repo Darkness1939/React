@@ -6,4 +6,4 @@ export default configureStore( {
         counter: counterReducer,
     },
     devTools: true
-});
+}); 
