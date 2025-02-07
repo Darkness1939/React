@@ -1,24 +1,26 @@
-import React, { FC, useEffect, useState } from "react";
-import Button from "../common/Button/Butcomponent";
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { increment, decrement, reset } from "../../../store/reducers/counterReducer";
 
-const Counter:FC = () => {
-    const [count, setCount] = useState(0);
+interface RootState {
+   counter: {
+     count: number
+    }
+}
 
-    useEffect(() => { console.log('Count has changed!') }, [count])
+const Counter = () => {
 
-    return (
-        <div>
-            <h2>{count} likes</h2>
-            <Button onClick={() => setCount(count + 1)}>+1</Button>
-            <Button onClick={() => setCount(count - 1)}>-1</Button>
+  const count = useSelector((state : RootState) => state.counter.count);
+  const dispatch = useDispatch();
 
-            <Button onClick={() => setCount(count + 10)}>+10</Button>
-            <Button onClick={() => setCount(count - 10)}>-10</Button>
-
-            <Button onClick={() => setCount(0)}>Reset count</Button>
-            <h3>Sigma?</h3>
-        </div>
-    );
+  return (
+    <div>
+      <h1>Counter: {count}</h1>
+      <button onClick={() => dispatch(increment())}>Increment</button>
+      <button onClick={() => dispatch(decrement())}>Decrement</button>
+      <button onClick={() => dispatch(reset())}>Reset</button>
+    </div>
+  );
 };
 
 export default Counter;

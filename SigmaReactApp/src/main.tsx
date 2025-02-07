@@ -4,7 +4,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import App from './App';
 import Home from './components/MySigmas/pagecom/homeMe';
 import Counter from './components/MySigmas/counter/Counter';
-import store from './store';
+import store from './store/store';
 import { Provider } from 'react-redux';
 
 const router = createBrowserRouter([
